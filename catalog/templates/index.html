@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
 
-</body>
-</html>
+{% block content %}
+<h1>Mixed Group</h1>
+  <ul>
+    <li><strong>Teachers:</strong> {{ num_teachers }}</li>
+    <li><strong>Students:</strong> {{ num_students }}</li>
+    <li><strong>Locations:</strong> {{ num_locations }}</li>
+  </ul>
+
+{% endblock %}

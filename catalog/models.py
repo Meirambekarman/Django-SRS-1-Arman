@@ -4,7 +4,7 @@ from django.db import models
 
 class Location(models.Model):
     """
-    Model representing a employee location (e.g. Science Fiction, Non Fiction).
+    Model representing a student location (e.g. Science Fiction, Non Fiction).
     """
     city = models.CharField(max_length=50,
                             help_text="Қаланың атын еңгізіңіз")
@@ -56,7 +56,7 @@ class Student(models.Model):
         """
         Returns the url to access a detail record for this employee.
         """
-        return reverse('employee-detail', args=[str(self.id)])
+        return reverse('student-detail', args=[str(self.id)])
 
 # Create your models here.
 

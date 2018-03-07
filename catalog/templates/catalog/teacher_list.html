@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Teacher List</h1>
+
+    {% if teacher_list %}
+    <ul>
+
+      {% for teacher in teacher_list %}
+      <li>
+        <a href="{{teacher.get_absolute_url}}">{{ teacher.name}}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no teachers</p>
+    {% endif %}       
+{% endblock %}

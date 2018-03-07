@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Student List</h1>
+
+    {% if student_list %}
+    <ul>
+
+      {% for student in student_list %}
+      <li>
+        <a href="{{student.get_absolute_url}}">{{ student.FirstName }} {{student.LastName}} </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no students</p>
+    {% endif %}       
+{% endblock %}
