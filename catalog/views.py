@@ -3,17 +3,32 @@ from django.shortcuts import render
 # Create your views here.
 
 from .models import Student, Teacher, Location
-
+import datetime
 
 def index(request):
     num_teachers = Teacher.objects.count()
     num_students = Student.objects.all().count()
     num_locations = Location.objects.count()
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    time = datetime.datetime.now()
+    w_day = time.weekday()
+    day = time.day
+    month = time.month
+    year = time.year
+    microsecond = time.microsecond
+    second = time.second
+    minute = time.minute
+    hour = time.hour
+
     return render(
         request,
         'index.html',
-        context={'num_students': num_students, 'num_teachers': num_teachers, 'num_locations': num_locations},
+        context={'num_students': num_students, 'num_teachers': num_teachers, 'num_locations': num_locations, 'num_visits': num_visits, 'w_day': w_day,
+                 'day': day, 'month': month, 'year': year, 'microsecond': microsecond, 'second': second, 'minute': minute, 'hour': hour},
     )
 
 
