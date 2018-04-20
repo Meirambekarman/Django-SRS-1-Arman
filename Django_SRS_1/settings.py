@@ -76,8 +76,14 @@ WSGI_APPLICATION = 'Django_SRS_1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'heroku_53f288823c27dd0',
+        'USER':'b94731cbdfc211',
+        'PASSWORD':'eeeb3d44',
+        'HOST':'us-cdbr-iron-east-05.cleardb.net',
+        'PORT':'3306'
     }
 }
 

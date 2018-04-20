@@ -16,6 +16,7 @@ def index(request):
 
     time = datetime.datetime.now()
     w_day = time.weekday()
+    w_day = w_day
     day = time.day
     month = time.month
     year = time.year
@@ -23,14 +24,16 @@ def index(request):
     second = time.second
     minute = time.minute
     hour = time.hour
-
+    # Render the HTML template index.html with the data in the context variable.
     return render(
         request,
         'index.html',
-        context={'num_students': num_students, 'num_teachers': num_teachers, 'num_locations': num_locations, 'num_visits': num_visits, 'w_day': w_day,
-                 'day': day, 'month': month, 'year': year, 'microsecond': microsecond, 'second': second, 'minute': minute, 'hour': hour},
-    )
+        context={'num_students': num_students, 'num_teachers': num_teachers, 'num_locations': num_locations, 'num_visits': num_visits,
+                 'weekday': w_day,
+                 'hour': hour, 'minute': minute, 'second': second, 'microsecond': microsecond,
+                 'day': day, 'month': month, 'year': year, },  # num_visits appended
 
+    )
 
 from django.views import generic
 
