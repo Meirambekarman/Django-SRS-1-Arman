@@ -20,12 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '87)kw4u#gt6$cc5&qv-)ftf4js*&3=g&wzv#v!lgelqyvo%hfm'
+#SECRET_KEY = '87)kw4u#gt6$cc5&qv-)ftf4js*&3=g&wzv#v!lgelqyvo%hfm'
+import os
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['djangoproduct123.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'Django_SRS_1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,12 +81,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'heroku_53f288823c27dd0',
-        # 'USER':'b94731cbdfc211',
-        # 'PASSWORD':'eeeb3d44',
-        # 'HOST':'us-cdbr-iron-east-05.cleardb.net',
-        # 'PORT':'3306'
     }
 }
 
