@@ -79,11 +79,12 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangotest_db',
-        'USER':'root',
-        'PASSWORD':'1234',
-        'HOST':'127.0.0.1',
+        'NAME': 'heroku_678c5cee3ca23f5',
+        'USER':'b912b049bb3164',
+        'PASSWORD':'1c9d8f3a',
+        'HOST':'us-cdbr-iron-east-05.cleardb.net',
         'PORT':'3306',
+        # mysql://b912b049bb3164:1c9d8f3a@us-cdbr-iron-east-05.cleardb.net/heroku_678c5cee3ca23f5?reconnect=true
     }
 }
 
