@@ -62,3 +62,62 @@ class LocationListView(generic.ListView):
 
 class LocationDetailView(generic.DetailView):
     model = Location
+
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Location
+
+
+class LocationCreate(CreateView):
+    model = Location
+    fields = '__all__'
+
+
+class LocationUpdate(UpdateView):
+    model = Location
+    fields = ['city', 'region']
+
+
+class LocationDelete(DeleteView):
+    model = Location
+    success_url = reverse_lazy('locations')
+
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Student
+
+
+class StudentCreate(CreateView):
+    model = Student
+    fields = '__all__'
+
+
+class StudentUpdate(UpdateView):
+    model = Student
+    fields = '__all__'
+
+
+class StudentDelete(DeleteView):
+    model = Student
+    success_url = reverse_lazy('students')
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Teacher
+
+
+class TeacherCreate(CreateView):
+    model = Teacher
+    fields = '__all__'
+
+
+class TeacherUpdate(UpdateView):
+    model = Teacher
+    fields = '__all__'
+
+
+class TeacherDelete(DeleteView):
+    model = Teacher
+    success_url = reverse_lazy('teachers')

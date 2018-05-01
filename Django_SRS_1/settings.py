@@ -76,15 +76,8 @@ WSGI_APPLICATION = 'Django_SRS_1.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_678c5cee3ca23f5',
-        'USER':'b912b049bb3164',
-        'PASSWORD':'1c9d8f3a',
-        'HOST':'us-cdbr-iron-east-05.cleardb.net',
-        'PORT':'3306',
-        # mysql://b912b049bb3164:1c9d8f3a@us-cdbr-iron-east-05.cleardb.net/heroku_678c5cee3ca23f5?reconnect=true
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -122,11 +115,25 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
+
 STATIC_URL = '/static/'
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
